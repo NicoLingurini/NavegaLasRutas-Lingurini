@@ -1,0 +1,26 @@
+.contenedorGeneral {
+  display: flex;
+  align-items: center;
+}
+.lista {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 5px;
+  padding: 5px;
+}
+.boton {
+  margin: 50px;
+}
+.botonPalabra {
+  text-decoration: none;
+}
+.logo {
+  display: block;
+  width: 150px;
+}
+.saludo {
+  text-align: center;
+  font-size: 30px;
+}
