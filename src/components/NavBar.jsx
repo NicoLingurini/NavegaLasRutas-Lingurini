@@ -1,40 +1,29 @@
-import { CartWidget } from "./CartWidget";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
-export const NavBar = () => (
-  <div className="contenedorGeneral">
-    <img src="../img/logobazar.jpg" className="logo" />
-    <ul className="lista">
-      <li className="boton">
-        <a className="botonPalabra" href="#">
-          Inicio
-        </a>
-      </li>
-      <li className="boton">
-        <a className="botonPalabra" href="#">
-          Ofertas
-        </a>
-      </li>
-      <li className="boton">
-        <a className="botonPalabra" href="#">
-          Productos
-        </a>
-      </li>
-      <li className="boton">
-        <a className="botonPalabra" href="#">
-          Contacto
-        </a>
-      </li>
-      <li className="boton">
-        <a className="botonPalabra" href="#">
-          Preguntas Frecuentes
-        </a>
-      </li>
-      <li className="boton">
-        <a className="botonPalabra" href="#">
-          Nosotros
-        </a>
-      </li>
-    </ul>
-    <CartWidget />
-  </div>
+import { NavLink } from "react-router-dom";
+
+import { CartWidget, CartWidget2 } from "./CartWidget";
+
+export const NavBarHome = () => (
+  <Navbar className="d-flex">
+    <Container>
+      <CartWidget2 />
+
+      <Nav>
+        <Nav.Link to="/" as={NavLink}>
+          INICIO
+        </Nav.Link>
+        <Nav.Link to="/type/BB" as={NavLink}>
+          VAJILLAS
+        </Nav.Link>
+        <Nav.Link to="/type/AA" as={NavLink}>
+          CUBIERTOS
+        </Nav.Link>
+      </Nav>
+
+      <CartWidget />
+    </Container>
+  </Navbar>
 );
