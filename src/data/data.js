@@ -6,7 +6,7 @@ export const articulos = [
     precio: 7000,
     imagen:
       "https://images.unsplash.com/photo-1568454789753-a689c143d1c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGxhdG98ZW58MHx8MHx8fDA%3D",
-    type: "AA",
+    type: "BB",
   },
   {
     id: 2,
