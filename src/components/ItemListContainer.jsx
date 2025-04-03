@@ -8,7 +8,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { ArticuloList } from "./itemList";
+import { ArticuloList } from "./ItemList";
 
 export const ArticuloListContainer = () => {
   const [products, setProducts] = useState([]);
