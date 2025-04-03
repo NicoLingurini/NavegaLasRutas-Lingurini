@@ -10,12 +10,18 @@ export const CartWidgetImg1 = () => {
   );
   return (
     <div>
-      <img src="../img/carrito.jpg" className="logo" />
+      <img
+        src="https://codigofuentenet.wordpress.com/wp-content/uploads/2013/02/shoppingcartempty.jpg"
+        className="logo"
+      />
       <Button variant="primary">VER CARRITO</Button>
       <span className="badge text-bg-primary rounded-pill">{totalCount}</span>
     </div>
   );
 };
 export const CartWidgetImg2 = () => (
-  <img src="../img/logobazar.jpg" className="logo" />
+  <img
+    src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1ae2f745704033.583c40fb048e9.jpg"
+    className="logo"
+  />
 );

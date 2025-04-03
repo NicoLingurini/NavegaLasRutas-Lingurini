@@ -30,11 +30,11 @@
 }
 .logoredes {
   display: flex;
-  gap: 10px;
+  gap: 30px;
 }
 .imagenredes {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .tarjetadetalle {
