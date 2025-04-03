@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { Container } from "react-bootstrap";
-
-import { articulos } from "../data/data";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import { ArticuloList } from "./itemList";
 
 export const ArticuloListContainer = () => {
@@ -11,16 +15,17 @@ export const ArticuloListContainer = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   useEffect(() => {
-    new Promise((resolve, reject) => setTimeout(() => resolve(articulos), 3000))
-      .then((respuesta) => {
-        if (!id) {
-          setProducts(respuesta);
-        } else {
-          const filtered = respuesta.filter(
-            (articulos) => articulos.type === id
-          );
-          setProducts(filtered);
-        }
+    const db = getFirestore();
+    const q = id
+      ? query(collection(db, "items"), where("category", "==", id))
+      : query(collection(db, "items"));
+    getDocs(q)
+      .then((snapshot) => {
+        setProducts(
+          snapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
       })
       .finally(() => setLoading(false));
   }, [id]);
@@ -28,7 +33,7 @@ export const ArticuloListContainer = () => {
   if (loading) return "CARGANDO";
 
   return (
-    <Container className="d-flex">
+    <Container className="d-flex articulo list">
       <ArticuloList articulos={products} />
     </Container>
   );

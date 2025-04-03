@@ -1,22 +1,62 @@
-.contenedorGeneral {
-  display: flex;
-  align-items: center;
-}
-.lista {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style-type: none;
-  margin: 5px;
-  padding: 5px;
-}
-.boton {
-  margin: 50px;
-}
-.botonPalabra {
-  text-decoration: none;
-}
 .logo {
   display: block;
   width: 150px;
+}
+.ImagenArticulo {
+  max-width: auto;
+}
+.barra {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #dbdada;
+  color: #0a0a0a;
+  border: 2px solid black;
+  padding: 10px;
+}
+.nombreempresa {
+  display: flex;
+  font-size: 18px;
+  text-align: center;
+}
+.p {
+  margin: auto;
+}
+.logoredes {
+  display: flex;
+  gap: 10px;
+}
+.imagenredes {
+  width: 30px;
+  height: 30px;
+}
+
+.tarjetadetalle {
+  border: 2px solid black;
+  padding: 10px;
+  background-color: #dbdada;
+}
+.form {
+  border: 2px solid black;
+  padding: 10px;
+  background-color: #dbdada;
+}
+.articulo {
+  justify-content: center;
+  border: 2px solid black;
+  max-width: 100%;
+  background-color: #dbdada;
+  img {
+    width: 171px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
 }

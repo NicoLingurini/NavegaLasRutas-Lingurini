@@ -1,37 +1,46 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
-
-import { articulos } from "../data/data";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
+import { CartContext } from "../contexts/CartContext";
+import { ItemCount } from "./ItemCount";
 
 export const Detail = () => {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const { onAdd } = useContext(CartContext);
   useEffect(() => {
-    new Promise((resolve, reject) => setTimeout(() => resolve(articulos), 3000))
-      .then((respuesta) => {
-        const finded = respuesta.find(
-          (articulos) => articulos.id === Number(id)
-        );
-        setProduct(finded);
+    const db = getFirestore();
+    const refDoc = doc(db, "items", id);
+    getDoc(refDoc)
+      .then((snapshot) => {
+        setProduct({ ...snapshot.data(), id: snapshot.id });
       })
       .finally(() => setLoading(false));
   }, [id]);
 
+  const add = (count) => {
+    onAdd({ ...product, count });
+  };
+
   if (loading) return "CARGANDO";
 
   return (
-    <Container className="d-flex justify-content-center">
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={product.imagen} />
-        <Card.Body>
-          <Card.Title>{product.nombre}</Card.Title>
-          <Card.Text>{product.descripcion}</Card.Text>
-          <Card.Text>${product.precio}</Card.Text>
-        </Card.Body>
-      </Card>
-    </Container>
+    <div className="tarjetadetalle">
+      <Container className=" d-flex justify-content-center">
+        <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src={product.imageURL} />
+          <Card.Body>
+            <Card.Title>{product.title}</Card.Title>
+            <Card.Text>{product.descripcion}</Card.Text>
+            <Card.Text>${product.price}</Card.Text>
+            <Card.Text>STOCK: {product.stock}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Container>
+      <ItemCount stock={product.stock} add={add} />
+    </div>
   );
 };
